@@ -9,3 +9,5 @@ __pycache__/
 .env
 
 notebooks_scratch/
+node_modules/
+frontend/logo.png

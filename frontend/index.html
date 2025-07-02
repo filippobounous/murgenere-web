@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>murgenere</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    function Home() {
+      return (
+        <div>
+          <h1>murgenere.com</h1>
+          <img src="https://via.placeholder.com/150" alt="Murgenere" />
+        </div>
+      );
+    }
+
+    const API_BASE =
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:8000'
+        : '';
+
+    function Inventory() {
+      const runAnalysis = async () => {
+        const res = await fetch(`${API_BASE}/api/inventory`);
+        const data = await res.json();
+        alert(JSON.stringify(data));
+      };
+      return (
+        <div>
+          <h2>Inventory</h2>
+          <button onClick={runAnalysis}>Run Analysis</button>
+        </div>
+      );
+    }
+
+    function Investments() {
+      const runAnalysis = async () => {
+        const res = await fetch(`${API_BASE}/api/investments`);
+        const data = await res.json();
+        alert(JSON.stringify(data));
+      };
+      return (
+        <div>
+          <h2>Investments</h2>
+          <button onClick={runAnalysis}>Run Analysis</button>
+        </div>
+      );
+    }
+
+    function Dashboard() {
+      return (
+        <div>
+          <h1>my.murgenere.com</h1>
+          <Inventory />
+          <Investments />
+        </div>
+      );
+    }
+
+    function App() {
+      const host = window.location.hostname;
+      if (host.startsWith('my.')) {
+        return <Dashboard />;
+      }
+      return <Home />;
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
