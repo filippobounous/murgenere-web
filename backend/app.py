@@ -3,8 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 try:
-    from personal import inventory, investments
-except ImportError:  # personal package not installed
+    from fball import inventory, investments
+except ImportError:  # fball package not installed
     inventory = None
     investments = None
 

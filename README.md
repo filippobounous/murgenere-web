@@ -3,7 +3,7 @@
 This repository contains a minimal React front‑end and a FastAPI back‑end for
 `murgenere.com`, `inventory.murgenere.com`, and `investments.murgenere.com`. The front‑end is a single HTML file that
 loads React from a CDN. The back‑end exposes API endpoints that can call the
-`filippobounous/personal` package when it is installed.
+`filippobounous/fball` package when it is installed.
 
 ## Setup
 
@@ -11,8 +11,8 @@ loads React from a CDN. The back‑end exposes API endpoints that can call the
 
    ```bash
    python3 -m pip install fastapi uvicorn
-   # Optional: install the personal package for real analysis
-   python3 -m pip install git+https://github.com/filippobounous/personal.git
+  # Optional: install the fball package for real analysis
+  python3 -m pip install git+https://github.com/filippobounous/fball.git
    ```
 
 2. **Run the back‑end**
@@ -40,8 +40,8 @@ loads React from a CDN. The back‑end exposes API endpoints that can call the
      section.
    - When accessed on `investments.murgenere.com`, the page shows the
      **Investments** section.
-   Each button triggers a request to the back‑end which can use your personal
-   Python package to perform analysis.
+  Each button triggers a request to the back‑end which can use your `fball`
+  package to perform analysis.
 
 The front‑end uses standard `fetch` calls to `/api/inventory` and
 `/api/investments` and displays the JSON response in an alert.
