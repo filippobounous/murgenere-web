@@ -53,20 +53,13 @@
       );
     }
 
-    function Dashboard() {
-      return (
-        <div>
-          <h1>my.murgenere.com</h1>
-          <Inventory />
-          <Investments />
-        </div>
-      );
-    }
-
     function App() {
       const host = window.location.hostname;
-      if (host.startsWith('my.')) {
-        return <Dashboard />;
+      if (host.startsWith('inventory.')) {
+        return <Inventory />;
+      }
+      if (host.startsWith('investments.')) {
+        return <Investments />;
       }
       return <Home />;
     }
