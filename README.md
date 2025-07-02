@@ -35,11 +35,23 @@ loads React from a CDN. The back‑end exposes API endpoints that can call the
    ```
 
    Then visit `http://localhost:8080` in your browser.
-   - When accessed on `murgenere.com`, the page shows a simple picture.
-   - When accessed on `inventory.murgenere.com`, the page shows the **Inventory**
-     section.
-   - When accessed on `investments.murgenere.com`, the page shows the
-     **Investments** section.
+
+   By default the app determines what to display based on the host name. For
+   local testing you can map custom sub‑domains to `127.0.0.1` in your
+   `/etc/hosts` file, for example:
+
+   ```
+   127.0.0.1 murgenere.localhost inventory.localhost investments.localhost
+   ```
+
+   After that you can open:
+   - `http://murgenere.localhost:8080` to view the picture shown on
+     **murgenere.com**.
+   - `http://inventory.localhost:8080` for the **Inventory** section.
+   - `http://investments.localhost:8080` for the **Investments** section.
+
+   On production the corresponding `*.murgenere.com` domains serve the same
+   content.
   Each button triggers a request to the back‑end which can use your `fball`
   package to perform analysis.
 
