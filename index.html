@@ -19,11 +19,17 @@
     .image-container {
       position: relative;
       flex: 1;
-      overflow-y: auto;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .image-container img {
       display: block;
-      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
     }
     .menu {
       position: absolute;
@@ -92,6 +98,18 @@
       if (!button.contains(e.target) && !menu.contains(e.target)) {
         menu.classList.remove('show');
       }
+    });
+
+    // Adjust page background based on the image's average colour
+    const img = document.querySelector('.image-container img');
+    img.addEventListener('load', () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1;
+      canvas.height = 1;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 1, 1);
+      const pixel = ctx.getImageData(0, 0, 1, 1).data;
+      document.body.style.backgroundColor = `rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`;
     });
   </script>
 </body>
