@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    networks:
+      - murgenet
+  # Example of another service running alongside the web server
+  other-app:
+    image: alpine
+    command: ["sh", "-c", "while true; do echo other app running; sleep 60; done"]
+    networks:
+      - murgenet
+
+networks:
+  murgenet:
