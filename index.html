@@ -17,6 +17,7 @@
       flex-direction: column;
     }
     .image-container {
+      position: relative;
       flex: 1;
       overflow-y: auto;
     }
@@ -25,11 +26,42 @@
       width: 100%;
     }
     .menu {
-      position: sticky;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 10px;
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
       text-align: center;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      min-width: 160px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .dropdown-content a {
+      color: #000;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+    .show {
+      display: block;
     }
   </style>
 </head>
@@ -37,20 +69,28 @@
   <div class="wrapper">
     <div class="image-container">
       <img src="background.jpg" alt="Background" />
-    </div>
-    <div class="menu">
-      <label for="nav-select">Go to:</label>
-      <select id="nav-select">
-        <option value="">Select a page</option>
-        <option value="https://murgenere.com">murgenere.com</option>
-        <option value="https://example.com">other service</option>
-      </select>
+      <div class="menu">
+        <div class="dropdown">
+          <button id="dropdown-button" class="dropdown-button">Select a page</button>
+          <div id="dropdown-menu" class="dropdown-content">
+            <a href="https://murgenere.com">murgenere.com</a>
+            <a href="https://example.com">other service</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script>
-    document.getElementById('nav-select').addEventListener('change', function() {
-      if (this.value) {
-        window.location.href = this.value;
+    const button = document.getElementById('dropdown-button');
+    const menu = document.getElementById('dropdown-menu');
+
+    button.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!button.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('show');
       }
     });
   </script>
