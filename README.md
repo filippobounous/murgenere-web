@@ -2,7 +2,7 @@
 
 A wrapper for murgenere.com and other apps.
 
-This repository now includes a simple `index.html` that displays a fullscreen image and a dropdown menu for navigating to external services. The menu can be customised by editing the `<select>` options in the HTML file.
+This repository now includes a simple `index.html` that displays a fullscreen image and a dropdown menu for navigating to external services. Provide your own `background.jpg` next to the HTML file to customise the background. The menu can be customised by editing the `<select>` options in the HTML file.
 
 To view locally, just open `index.html` in your browser.
 
