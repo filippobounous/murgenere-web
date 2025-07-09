@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+    .wrapper {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .image-container {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .image-container img {
+      display: block;
+      width: 100%;
+    }
+    .menu {
+      position: sticky;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="image-container">
+      <img src="https://source.unsplash.com/random/1920x3000" alt="Full page image" />
+    </div>
+    <div class="menu">
+      <label for="nav-select">Go to:</label>
+      <select id="nav-select">
+        <option value="">Select a page</option>
+        <option value="https://murgenere.com">murgenere.com</option>
+        <option value="https://example.com">other service</option>
+      </select>
+    </div>
+  </div>
+  <script>
+    document.getElementById('nav-select').addEventListener('change', function() {
+      if (this.value) {
+        window.location.href = this.value;
+      }
+    });
+  </script>
+</body>
+</html>
